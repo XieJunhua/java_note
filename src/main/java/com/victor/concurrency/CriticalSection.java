@@ -31,6 +31,7 @@ public class CriticalSection {
         }
         System.out.println("pm1: " + pm1 + "\n pm2: " + pm2);
         //输出的结果可以得出,synchronized对整个方法加锁对比对部分代码加锁,后者对象不加锁的时间更长。
+        //我们在进行加锁的时候尽量采用对代码块进行加锁
         System.exit(0); //退出当前程序
     }
 
