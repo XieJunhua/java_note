@@ -1,10 +1,12 @@
 package com.victor.concurrency.shareresource;
 
+import java.util.HashMap;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 /**
  * Created by xiejunhua on 16/12/23.
+ * 消费者任务
  */
 public class EventChecker implements Runnable {
     private IntGenerator intGenerator;

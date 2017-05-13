@@ -8,15 +8,15 @@ import java.util.concurrent.*;
  */
 
 /**
+ * 21.2.4
  * Runnable是执行工作的独立任务,不提供返回值。要想在任务完成时有返回值,则要实现Callable接口
+ * 一个Callable使用的简单例子
  */
 class TaskWithResult implements Callable<String> {
     private int id;
     public TaskWithResult(int id){
         this.id = id;
     }
-    private int num = 0;
-
     //在Callable接口中定义的call方法和在Runnable中定义的run方法类似
     public String call() throws Exception {
 
@@ -37,8 +37,11 @@ public class CallableDemo {
         }
         for (Future<String> fs: results) {
             try{
-                fs.isDone();//判断是否任务完成。
-                System.out.println(fs.get()); //fs.get()会堵在那里,直到任务完成
+                if (fs.isDone()) {//判断是否任务完成。
+                    System.out.println(fs.get());
+                }
+//                System.out.println(fs.get()); //也可以不判断任务是否完成，fs.get()会堵在那里,直到任务完成，拿到返回值。
+
             } catch (InterruptedException e) {
                 e.printStackTrace();
             } catch (ExecutionException e) {

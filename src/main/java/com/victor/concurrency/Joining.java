@@ -4,6 +4,10 @@ package com.victor.concurrency;
  * Created by xiejunhua on 16/12/23.
  */
 
+
+/**
+ * join的例子
+ */
 public class Joining {
 
     public static void main(String[] args) {

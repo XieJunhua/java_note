@@ -9,6 +9,7 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * Created by xiejunhua on 16/12/26.
+ * 21.4.1
  */
 public class OrnamentalGarden {
 
@@ -24,6 +25,7 @@ public class OrnamentalGarden {
             System.out.println("Some tasks were not terminated");
         }
         System.out.println("Total: " + Entrance.getTotalCount());
+        System.out.println("sum of: " + Entrance.sumEntrances());
     }
 }
 
@@ -42,9 +44,12 @@ class Count {
     }
 }
 
+/**
+ * 模拟公园的入口类
+ */
 class Entrance implements Runnable {
 
-    private static Count count = new Count();
+    private static Count count = new Count(); //总人数
     private static List<Entrance> entrances = new ArrayList<Entrance>();
     private int number = 0; //通过这个入口进入的人数
     private final int id; //入口id
@@ -63,6 +68,7 @@ class Entrance implements Runnable {
             synchronized (this) {
                 ++number;
             }
+//            ++number;
             System.out.println(this + "Total: " + count.increment()); //总人数+1
             try {
                 TimeUnit.MILLISECONDS.sleep(100);
