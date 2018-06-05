@@ -1,7 +1,7 @@
 package com.victor.concurrency;
 
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
+import java.util.*;
+import java.util.concurrent.*;
 
 /**
  * Created by xiejunhua on 16/12/22.
@@ -18,13 +18,25 @@ class LiftOff implements Runnable {
         this.countDown = countDown;
     }
     public String status() {
+
+        StringBuilder stringBuilder = new StringBuilder();
+
         return "#" + id + "(" + (countDown > 0 ? countDown : "Liftoff!") + ").";
     }
     public void run() {
         //run中通常会有某种形式的循环，使得任务一直运行下去直到不再需要。
         while (countDown-- >0) {
-            System.out.println(status());
-            Thread.yield();
+            System.out.println("Thread-Name: " + Thread.currentThread().getName() + "  " + status());
+            Random random = new Random();
+//            if (random.nextBoolean()) {
+//                throw new RuntimeException("错误");
+//            }
+//            try {
+//                Thread.sleep(1000);
+//            } catch (InterruptedException e) {
+//                e.printStackTrace();
+//            }
+//            Thread.yield();
         }
     }
 }
@@ -44,12 +56,68 @@ public class ThreadPoolSample{
 //        System.out.println("waiting for liftoff...");
 
         //Executor用来管理Thread对象，简化并发编程。是并发编程中启动任务的首选方法
-//        ExecutorService executorService = Executors.newCachedThreadPool(); //
-        ExecutorService executorService = Executors.newFixedThreadPool(1); //指定线程池中线程的个数
-        for (int i = 0; i < 5; i++) {
-            executorService.execute(new LiftOff());
+        ExecutorService executorService1 = Executors.newCachedThreadPool();
+        ExecutorService executorService = Executors.newFixedThreadPool(2); //指定线程池中线程的个数
+        LinkedList linkedList = new LinkedList();
+        ArrayList arrayList = new ArrayList();
+
+
+
+
+        List<Callable<String>> list = new ArrayList<>();
+        list.add(() -> "task1");
+        list.add(() -> "task2");
+        list.add(() -> "task3");
+
+        Random random = new Random();
+
+        for (int i = 0; i < 100; i++) {
+            int finalI = i;
+            list.add(() -> {
+                TimeUnit.MILLISECONDS.sleep(500);
+                return  "task: " + Thread.currentThread().getName() + " i: " + finalI;
+            });
         }
-        executorService.shutdown();
+
+
+        ExecutorService executorService3 = Executors.newWorkStealingPool(5);
+        ExecutorService executorService2 = Executors.newFixedThreadPool(5);
+//        executorService3.
+        try {
+            long start = System.currentTimeMillis();
+            List<Future<String>> list1 = executorService3.invokeAll(list);
+            list1.stream().map(future -> {
+                try {
+                    return future.get();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                } catch (ExecutionException e) {
+                    e.printStackTrace();
+                }
+                return null;
+            }).forEach(System.out::println);
+            long end = System.currentTimeMillis();
+            System.out.println("total time: " + (end - start));
+
+            List<Future<String>> list2 = executorService2.invokeAll(list);
+            list2.stream().map(future -> {
+                try {
+                    return future.get();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                } catch (ExecutionException e) {
+                    e.printStackTrace();
+                }
+                return null;
+            }).forEach(System.out::println);
+            System.out.println("cache pool time:" + (System.currentTimeMillis() - end));
+
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } finally {
+            executorService2.shutdown();
+            executorService3.shutdown();
+        }
 
 
 

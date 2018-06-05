@@ -7,7 +7,7 @@ import com.victor.designmode.wrapper.v2.TShirt;
 /**
  * Created by xiejunhua on 2017/5/14.
  * 装饰模式: 装饰模式是为已有的功能动态的添加功能的一种方式。
- * 装饰模式的有点。把类中的装饰功能移除到具体的装饰类中，这样可以简化原有的类。
+ * 装饰模式的优点。把类中的装饰功能移除到具体的装饰类中，这样可以简化原有的类。
  */
 public class App {
 

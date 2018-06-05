@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="true" scanPeriod="60 seconds" debug="false">
+
+    <!-- 保存路径-->
+    <property name="logDir" value="/services/logs/"/>
+    <!-- 保存日志天数-->
+    <property name="maxHistory" value="3"/>
+
+    <property name="errorMaxHistory" value="30"/>
+    <!-- 项目名-->
+    <property name="projectName" value="sce"/>
+
+    <turboFilter class="com.victor.logger.SampleTurboFilter">
+        <Marker>CONFIG</Marker>
+    </turboFilter>
+
+
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n%r</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="CONSOLE" class="ch.qos.logback.core.FileAppender">
+        <!-- the filter element -->
+        <filter class="ch.qos.logback.core.filter.EvaluatorFilter">
+            <evaluator class="ch.qos.logback.classic.boolex.OnMarkerEvaluator">
+                <marker>CONFIG</marker>
+            </evaluator>
+            <onMismatch>DENY</onMismatch>
+            <onMatch>NEUTRAL</onMatch>
+        </filter>
+        <file>./mw_syslog.log</file>
+        <encoder>
+            <pattern>%date %level [%thread] %logger{10} [%file:%line] %msg%n</pattern>
+        </encoder>
+    </appender>
+
+
+    <!--<appender name="config" class="ch.qos.logback.core.ConsoleAppender">-->
+
+        <!--<encoder>-->
+            <!--<pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level [%logger:%L] - %msg%n</pattern>-->
+        <!--</encoder>-->
+
+    <!--</appender>-->
+
+    <!--<appender name="config" class="ch.qos.logback.core.rolling.RollingFileAppender">-->
+
+        <!--<evaluator class="ch.qos.logback.classic.boolex.OnMarkerEvaluator">-->
+            <!--<markers>-->
+                <!--<marker>config</marker>-->
+            <!--</markers>-->
+
+        <!--</evaluator>-->
+    <!--</appender>-->
+
+
+
+
+    <root level="INFO">
+        <!--<appender-ref ref="CONSOLE"/>-->
+        <appender-ref ref="CONSOLE">
+            <!--<MarkerFilter marker="CONFIG" onMatch="ACCEPT" onMisMatch="DENY"/>-->
+        </appender-ref>
+        <!--<appender-ref ref="config"/>-->
+    </root>
+
+
+
+
+</configuration>
