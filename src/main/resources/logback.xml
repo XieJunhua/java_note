@@ -10,7 +10,7 @@
     <!-- 项目名-->
     <property name="projectName" value="sce"/>
 
-    <turboFilter class="com.victor.logger.SampleTurboFilter">
+    <turboFilter class="com.junhua.logger.SampleTurboFilter">
         <Marker>CONFIG</Marker>
     </turboFilter>
 
