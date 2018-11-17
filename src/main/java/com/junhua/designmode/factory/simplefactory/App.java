@@ -1,4 +1,6 @@
-package com.junhua.designmode.simplefactory;
+package com.junhua.designmode.factory.simplefactory;
+
+import com.junhua.designmode.factory.Operation;
 
 /**
  * Created by xiejunhua on 2017/5/14.
