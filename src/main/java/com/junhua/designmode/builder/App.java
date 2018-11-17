@@ -10,15 +10,14 @@ package com.junhua.designmode.builder;
  */
 public class App {
 
-    public static void main(String[] args) {
-        Director director = new Director();
-        Builder builder1 = new ConcreteBuilder1();
-        Builder builder2 = new ConcreteBuilder2();
-        Product p = builder1.getResult();
-        p.show();
-        director.Construct(builder1);
-        p = builder1.getResult();
-        p.show();
+  public static void main(String[] args) {
 
+    //拿到director对象，按照需求建造不同数量的各种模型
+    Director director = new Director();
+    for (int i = 0; i < 10; i++) {
+      director.createTypeABenzModel();
     }
+
+
+  }
 }
