@@ -1,8 +1,8 @@
-package com.junhua.designmode.wrapper;
+package com.junhua.designmode.decorator;
 
-import com.junhua.designmode.wrapper.v2.BigTrouser;
-import com.junhua.designmode.wrapper.v2.Person;
-import com.junhua.designmode.wrapper.v2.TShirt;
+import com.junhua.designmode.decorator.v2.BigTrouser;
+import com.junhua.designmode.decorator.v2.Person;
+import com.junhua.designmode.decorator.v2.TShirt;
 
 /**
  * Created by xiejunhua on 2017/5/14.

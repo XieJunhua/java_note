@@ -1,4 +1,4 @@
-package com.junhua.designmode.wrapper;
+package com.junhua.designmode.decorator;
 
 /**
  * Created by xiejunhua on 2017/5/14.
