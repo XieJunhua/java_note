@@ -1,7 +1,7 @@
 package com.junhua.design.pattern.factory.factorymethod;
 
-import com.junhua.designmode.factory.DivOperation;
-import com.junhua.designmode.factory.Operation;
+import com.junhua.design.pattern.factory.DivOperation;
+import com.junhua.design.pattern.factory.Operation;
 
 /**
  * Created by xiejunhua on 2017/5/16.

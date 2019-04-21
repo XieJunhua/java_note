@@ -1,6 +1,6 @@
 package com.junhua.design.pattern.factory.simplefactory;
 
-import com.junhua.designmode.factory.Operation;
+import com.junhua.design.pattern.factory.Operation;
 
 /**
  * Created by xiejunhua on 2017/5/14.

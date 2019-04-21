@@ -1,5 +1,7 @@
 package com.junhua.design.pattern.factory.simplefactory;
 
+import com.junhua.design.pattern.factory.*;
+
 /**
  * Created by xiejunhua on 2017/5/14.
  */

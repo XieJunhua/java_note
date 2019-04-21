@@ -1,8 +1,8 @@
 package com.junhua.design.pattern.decorator;
 
-import com.junhua.designmode.decorator.v2.BigTrouser;
-import com.junhua.designmode.decorator.v2.Person;
-import com.junhua.designmode.decorator.v2.TShirt;
+import com.junhua.design.pattern.decorator.v2.BigTrouser;
+import com.junhua.design.pattern.decorator.v2.Person;
+import com.junhua.design.pattern.decorator.v2.TShirt;
 
 /**
  * Created by xiejunhua on 2017/5/14.
@@ -11,18 +11,18 @@ import com.junhua.designmode.decorator.v2.TShirt;
  */
 public class App {
 
-    public static void main(String[] args) {
+  public static void main(String[] args) {
 //        Beverage beverage = new CoffeeBean1();
 //        beverage = new Milk(beverage);
 //        System.out.println(beverage.getPrice());
 //        System.out.println(beverage.getDescription());
-        Person p = new Person("xiaoming");
-        BigTrouser bt = new BigTrouser();
-        TShirt t = new TShirt();
-        bt.decorate(p);
-        bt.show();
+    Person p = new Person("xiaoming");
+    BigTrouser bt = new BigTrouser();
+    TShirt t = new TShirt();
+    bt.decorate(p);
+    bt.show();
 //        t.decorate(bt);
 //        t.show();
 
-    }
+  }
 }

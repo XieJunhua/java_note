@@ -1,7 +1,7 @@
 package com.junhua.design.pattern.factory.factorymethod;
 
-import com.junhua.designmode.factory.AddOperation;
-import com.junhua.designmode.factory.Operation;
+import com.junhua.design.pattern.factory.AddOperation;
+import com.junhua.design.pattern.factory.Operation;
 
 /**
  * @author Junhua E-mail:xjhclks@163.com

@@ -34,6 +34,7 @@ public class EchoServer {
     final EchoServerHandler echoServerHandler = new EchoServerHandler();
     EventLoopGroup group = new NioEventLoopGroup();
     try {
+
       ServerBootstrap b = new ServerBootstrap();
       b.group(group)
               .channel(NioServerSocketChannel.class)  // 指定所有NIO传输的channel
