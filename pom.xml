@@ -23,6 +23,8 @@
     <modules>
         <module>netty</module>
         <module>design-pattern</module>
+        <module>java-se</module>
+        <module>algorithm</module>
         <module>hadoop</module>
     </modules>
 
@@ -58,6 +60,17 @@
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-dbcp2</artifactId>
             <version>2.1.1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.4</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-beanutils</groupId>
+            <artifactId>commons-beanutils</artifactId>
+            <version>1.9.3</version>
         </dependency>
     </dependencies>
 
