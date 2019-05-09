@@ -8,16 +8,33 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
+    <packaging>pom</packaging>
 
-    <artifactId>algorithm</artifactId>
 
 
-    <properties>
-        <!-- You may need to specify path to protobuf compiler -->
-        <protocCommand>/usr/local/bin/protoc</protocCommand>
-        <protobuf.version>3.7.1</protobuf.version>
-        <grpc.version>1.16.1</grpc.version>
-    </properties>
+    <artifactId>grpc-server</artifactId>
+
+
+    <dependencies>
+
+        <dependency>
+            <groupId>io.grpc</groupId>
+            <artifactId>grpc-netty</artifactId>
+            <version>${grpc.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.grpc</groupId>
+            <artifactId>grpc-protobuf</artifactId>
+            <version>${grpc.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.grpc</groupId>
+            <artifactId>grpc-stub</artifactId>
+            <version>${grpc.version}</version>
+        </dependency>
+    </dependencies>
+
+
 
     <build>
         <extensions>
@@ -32,7 +49,7 @@
             <plugin>
                 <groupId>org.xolstice.maven.plugins</groupId>
                 <artifactId>protobuf-maven-plugin</artifactId>
-                <version>0.5.1</version>
+                <version>0.6.1</version>
                 <configuration>
                     <protocArtifact>com.google.protobuf:protoc:${protobuf.version}:exe:${os.detected.classifier}
                     </protocArtifact>
@@ -42,33 +59,19 @@
                     <!-- proto文件目录 -->
                     <!--<protoSourceRoot>${project.basedir}/src/main/proto/feature_server.proto</protoSourceRoot>-->
                     <!-- 生成的Java文件目录 -->
-                    <outputDirectory>${project.basedir}/src/main/java/proto</outputDirectory>
+                    <!--<outputDirectory>${project.basedir}/src/main/java/proto</outputDirectory>-->
                     <!--<outputDirectory>${project.build.directory}/generated-sources/protobuf/java</outputDirectory>-->
                 </configuration>
                 <executions>
                     <execution>
                         <goals>
                             <goal>compile</goal>
-                            <goal>test-compile</goal>
+                            <goal>compile-custom</goal>
                         </goals>
                     </execution>
                 </executions>
             </plugin>
         </plugins>
     </build>
-
-    <dependencies>
-        <dependency>
-            <groupId>com.google.protobuf</groupId>
-            <artifactId>protobuf-java</artifactId>
-            <version>${protobuf.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.googlecode.protobuf-java-format</groupId>
-            <artifactId>protobuf-java-format</artifactId>
-            <version>1.2</version>
-        </dependency>
-    </dependencies>
-
 
 </project>

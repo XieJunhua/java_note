@@ -5,6 +5,7 @@ import org.apache.commons.beanutils.BeanUtils;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.concurrent.atomic.AtomicReference;
+import java.util.concurrent.atomic.AtomicStampedReference;
 
 public class StudentAtomicOperation {
     private AtomicReference<Student> reference = new AtomicReference<>();
