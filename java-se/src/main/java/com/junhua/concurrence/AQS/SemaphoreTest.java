@@ -7,8 +7,10 @@ import java.util.concurrent.Semaphore;
 public class SemaphoreTest {
     public static void main(String[] args) {
         ExecutorService executorService = Executors.newCachedThreadPool();
+
         final Semaphore semaphore = new Semaphore(5);
 
+        // 20个线程强5个资源，Semaphore可以控制。
         for (int i = 0; i < 20; i++) {
             final int NO = i;
             Runnable run = () -> {

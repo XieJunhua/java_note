@@ -1,6 +1,9 @@
 package com.junhua.base;
 
 
+import java.util.concurrent.ArrayBlockingQueue;
+import java.util.concurrent.BlockingQueue;
+
 public class IntegerTest {
     public static void main(String[] args) {
 
@@ -36,5 +39,6 @@ public class IntegerTest {
 //        int a4 = a3;
 //        System.out.println(a4);
 
+        System.out.println(12345+5432);
     }
 }

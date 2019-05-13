@@ -20,5 +20,11 @@ public class StringTest {
         String a = "a";
         System.out.println(a == b);
 
+        String s = "who";
+        System.out.println(s == "who");
+        System.out.println("who" == "who");
+        System.out.println("who" == new String("who"));
+        System.out.println("who" == new String("who").intern());
+
     }
 }
