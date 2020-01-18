@@ -29,6 +29,8 @@
         <module>grpc-server</module>
         <module>grpc-client</module>
         <module>grpc-client1</module>
+        <module>scala-code</module>
+        <module>flink-learn</module>
     </modules>
 
     <properties>
